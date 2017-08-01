@@ -21,13 +21,23 @@ export const routes = [
         path: '/admin', 
         name: 'admin', 
         component: Admin, 
-        titulo: 'Administrator'
+        titulo: 'Administrator',
+        meta: { 
+            requiresAuth: true,
+            adminAuth: true,
+            residentAuth: false
+        }
     },
     { 
         path: '/resident', 
         name: 'resident', 
         component: Resident, 
-        titulo: 'Resident',    
+        titulo: 'Resident',
+        meta: { 
+            requiresAuth: true,
+            adminAuth: false,
+            residentAuth: true
+        }
     },
     { 
         path: '*', 
