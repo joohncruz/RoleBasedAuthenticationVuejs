@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App';
 import VueRouter from 'vue-router';
-import { routes } from './routes.js';
+import { routes, authenticationRule } from './routes.js';
 
 Vue.config.productionTip = false
 
@@ -12,6 +12,8 @@ const router = new VueRouter({
   mode: 'history'
 });
 
+router.beforeEach((to, from, next) => authenticationRule(to, from, next))
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -19,3 +21,5 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+
+

@@ -5,7 +5,14 @@
         <label>Password: <input id="password" type="password" autocomplete="off" v-model="user.password"></input></label>
       
       <button type="submit">Entrar</button>
+
     </form>
+
+    <div class="users">
+      <h5>Users Avaibles</h5>
+      {{ users }}
+    </div>
+
   </div>
 </template>
 
@@ -17,7 +24,24 @@ export default {
   name: 'login',
   data () {
     return {
+      users: [
+    {
+        username: 'admin',
+        password: '123',
+        role: 'admin'
+    },
+    {
+        username: 'user',
+        password: '123',
+        role: 'resident'
+    }],
+
       user: {}
+    }
+  },
+  created() {
+    if(window.localStorage.getItem('lbUser')){
+      window.localStorage.removeItem('lbUser');
     }
   },
   methods: {
